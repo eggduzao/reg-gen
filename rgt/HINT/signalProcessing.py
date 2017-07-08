@@ -297,9 +297,9 @@ class GenomicSignal:
         for i in range((window / 2), len(af) - (window / 2)):
             nhatf = Nf[i - (window / 2)] * (af[i] / fSum)
             nhatr = Nr[i - (window / 2)] * (ar[i] / rSum)
-            #zf = log(nf[i] + 1) - log(nhatf + 1)
-            #zr = log(nr[i] + 1) - log(nhatr + 1)
-            bias_corrected_signal.append(nhatf + nhatr)
+            zf = log(nf[i] + 1) - log(nhatf + 1)
+            zr = log(nr[i] + 1) - log(nhatr + 1)
+            bias_corrected_signal.append(zf + zr)
             fSum -= fLast
             fSum += af[i + (window / 2)]
             fLast = af[i - (window / 2) + 1]
